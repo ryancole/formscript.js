@@ -1,47 +1,4 @@
 
-var schema = {
-    
-    fields: {
-        
-        foo: {
-            
-            type: 'text',
-            label: 'What is your name?'
-            
-        },
-        
-        bar: {
-            
-            type: 'textarea',
-            label: 'Great spot for some Lipsum:'
-            
-        },
-        
-        baz: {
-            
-            type: 'file',
-            label: 'Choose a file:'
-            
-        },
-        
-        bop: {
-            
-            type: 'select',
-            label: 'What is your favorite color?',
-            options: [
-            
-                { label: 'red', value: 'red' },
-                { label: 'green', value: 'green' },
-                { label: 'blue', value: 'blue' }
-            
-            ]
-            
-        }
-        
-    }
-    
-};
-
 function SchemaForm (selector) {
     
     this.settings = {
