@@ -8,28 +8,21 @@ Convert this ...
     fields: {
         
         name: {
-            
             type: 'text',
             label: 'What is your name?'
-            
         },
         
         lipsum: {
-            
             type: 'textarea',
             label: 'Great spot for some Lipsum:'
-            
         },
         
         file: {
-            
             type: 'file',
             label: 'Choose a file:'
-            
         },
         
         color: {
-            
             type: 'select',
             label: 'What is your favorite color?',
             options: [
@@ -39,11 +32,9 @@ Convert this ...
                 { label: 'blue', value: 'blue' }
             
             ]
-            
         }
         
     }
-    
 }
 ```
 
