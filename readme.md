@@ -61,7 +61,11 @@ Using the example above, the Object must have a property named `fields`. `fields
 
 The desired form field Objects *must* have the following properties: `type` and `label`. The `type` property should be a string containing the HTML form field type. These map to the [types specified by the HTML spec](https://developer.mozilla.org/en-US/docs/HTML/Element/Input#Attributes) itself, as well as additional elements such as `select`.
 
-Additional optional properties are necessary, depending on which form field type is being used.  
+Additional optional properties are necessary, depending on which form field type is being used.
+
+# Form Field Templates
+
+Each form field type is converted to HTML using its own template. Currently, the templates are hard-coded using underscore.js templates. The plan is to make both the template engine and template code customizable.
 
 # Dependencies
 
