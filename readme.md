@@ -52,7 +52,9 @@ In order for `schemaform.js` to be able to convert an Object into a form, the Ob
 
 Using the example above, the Object must have a property named `fields`. `fields` must be an embedded Object where each property specifies a desired HTML form field. The property name of each desired form field will be used within the generated HTML as the form field name.
 
-The desired form field Objects *must* have the following properties: `type` and `label`. The `type` property should be a string containing the HTML form field type. These map to the [types specified by the HTML spec](https://developer.mozilla.org/en-US/docs/HTML/Element/Input#Attributes) itself.  
+The desired form field Objects *must* have the following properties: `type` and `label`. The `type` property should be a string containing the HTML form field type. These map to the [types specified by the HTML spec](https://developer.mozilla.org/en-US/docs/HTML/Element/Input#Attributes) itself, as well as additional elements such as `select`.
+
+Additional optional properties are necessary, depending on which form field type is being used.  
 
 # Dependencies
 
