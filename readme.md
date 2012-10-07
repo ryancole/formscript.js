@@ -2,10 +2,17 @@
 
 # Example
 
-Convert this ...
+Use this ...
 
 ```javascript
-{
+var form = new SchemaForm('form-wrapper');
+form.renderSchema(schema);
+```
+
+to convert this ...
+
+```javascript
+var schema = {
     
     fields: {
         
