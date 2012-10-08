@@ -9,11 +9,37 @@ function SchemaFormBuilder (selector) {
     
     this.templates = this.compileTemplates({
         
-        builder: '<div class="field-wrapper"><select id="<%= id %>"><option value="none">Select the type of question to add</option><option disabled>-</option><option value="text">Open-ended question</option><option value="select">List of choices</option></select></div>',
-        text: '<div class="field-wrapper"><input type="text" /><input type="text" /></div>',
-        select: '<div class="field-wrapper"><input type="text" /><input type="text" /></div>'
+        text: '<div id="foo" class="field-wrapper" data-name="<%= name %>" data-type="text"><input type="text" class="field-label" /><input type="text" /></div>',
+        select: '<div class="field-wrapper" data-name="<%= name %>" data-type="select"><input type="text" class="field-label" /><input type="text" /></div>',
+        builder: '<div class="field-wrapper field-chooser"><select id="<%= id %>"><option value="none">Select the type of question to add</option><option disabled>-</option><option value="text">Open-ended question</option><option value="select">List of choices</option></select></div>'
         
     });
+    
+};
+
+SchemaFormBuilder.prototype.generateObject = function () {
+    
+    var generatedObject = { fields: { } },
+        elementChildren = this.settings.element.children;
+    
+    _.each(elementChildren, function (elementChild) {
+        
+        // no op on field chooser
+        if (elementChild.classList.contains('field-chooser'))
+            return;
+        
+        var labelElement = elementChild.getElementsByClassName('field-label')[0];
+        
+        // init an object for this field
+        generatedObject.fields[elementChild.dataset.name] = new Object;
+        
+        // set object attributes
+        generatedObject.fields[elementChild.dataset.name].type = elementChild.dataset.type;
+        generatedObject.fields[elementChild.dataset.name].label = labelElement.value;
+        
+    });
+    
+    return generatedObject;
     
 };
 
@@ -43,10 +69,13 @@ SchemaFormBuilder.prototype.renderChooseFieldType = function () {
         // remove the choose field element
         this.settings.element.removeChild(element.parentElement);
         
+        // create a unique id for the select dropdown
+        var fieldName = _.uniqueId('field_');
+        
         var render = this.templates[selectedType.value];
         
         // add the builder for the selected field type
-        this.settings.element.insertAdjacentHTML('beforeend', render());
+        this.settings.element.insertAdjacentHTML('beforeend', render({ name: fieldName }));
         
         // also add a new field chooser for additional fields
         this.renderChooseFieldType();
