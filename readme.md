@@ -1,11 +1,11 @@
-`schemaform.js` converts Javascript Objects into HTML forms.
+`formscript.js` converts Javascript Objects into HTML forms.
 
 # Example
 
 Use this ...
 
 ```javascript
-var form = new SchemaForm('form-wrapper');
+var form = new FormScript('form-wrapper');
 form.renderSchema(schema);
 ```
 
@@ -55,7 +55,7 @@ into this ...
 
 # Naming Convention
 
-In order for `schemaform.js` to be able to convert an Object into a form, the Object must follow a particular naming convention.
+In order for `formscript.js` to be able to convert an Object into a form, the Object must follow a particular naming convention.
 
 Using the example above, the Object must have a property named `fields`. `fields` must be an embedded Object where each property specifies a desired HTML form field. The property name of each desired form field will be used within the generated HTML as the form field name.
 
@@ -69,4 +69,4 @@ Each form field type is converted to HTML using its own template. Currently, the
 
 # Dependencies
 
-`schemaform.js` requires `underscore.js`.
+`formscript.js` requires `underscore.js`.
