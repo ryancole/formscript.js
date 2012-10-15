@@ -1,4 +1,4 @@
-`formscript.js` converts Javascript Objects into HTML forms.
+FormScript converts Javascript Objects into HTML forms.
 
 # Example
 
