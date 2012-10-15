@@ -1,5 +1,5 @@
 
-function SchemaForm (selector) {
+function FormScript (selector) {
     
     this.settings = {
         
@@ -18,7 +18,7 @@ function SchemaForm (selector) {
     
 };
 
-SchemaForm.prototype.compileTemplates = function (templates) {
+FormScript.prototype.compileTemplates = function (templates) {
     
     _.each(templates, function (template, key) {
         
@@ -30,7 +30,7 @@ SchemaForm.prototype.compileTemplates = function (templates) {
     
 };
 
-SchemaForm.prototype.renderField = function (name, field) {
+FormScript.prototype.renderField = function (name, field) {
     
     // get the field type's render function
     var render = this.templates[field.type];
@@ -43,7 +43,7 @@ SchemaForm.prototype.renderField = function (name, field) {
     
 };
 
-SchemaForm.prototype.renderFields = function (fields) {
+FormScript.prototype.renderFields = function (fields) {
     
     _.each(fields, function (field, key) {
         
@@ -53,7 +53,7 @@ SchemaForm.prototype.renderFields = function (fields) {
     
 };
 
-SchemaForm.prototype.renderSchema = function (schema) {
+FormScript.prototype.renderSchema = function (schema) {
     
     this.renderFields(schema.fields);
     
