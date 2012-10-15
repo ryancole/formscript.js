@@ -1,5 +1,5 @@
 
-function FormScript (selector) {
+function FormScript (selector, templates) {
     
     this.settings = {
         
@@ -7,14 +7,14 @@ function FormScript (selector) {
         
     };
     
-    this.templates = this.compileTemplates({
+    this.templates = this.compileTemplates(_.defaults(templates || {}, {
         
         text: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><input type="text" name="<%= name %>" /></div>',
         file: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><input type="file" name="<%= name %>" /></div>',
         textarea: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><textarea name="<%= name %>"></textarea></div>',
         select: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><select name="<%= name %>"><% _.each(options, function (option) { %> <option value="<%= option.value %>"><%= option.label %></option> <% }); %></select></div>'
         
-    });
+    }));
     
 };
 
