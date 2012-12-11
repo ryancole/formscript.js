@@ -34,10 +34,6 @@ form.renderSchema({
 });
 ```
 
-## Why?!?
-
-A particular project called for dynamic web forms that could also be queried on, once submitted, based on the given field names and values. Think about a ticket system in which the end users get to also specify the ticket's fields when then open a new ticket.
-
 ## Naming Convention
 
 In order for `FormScript` to convert a Javascript Object into an HTML Form, the Object must follow a particular naming convention.
@@ -58,16 +54,20 @@ Each form field type is converted to HTML using its own `underscore.js` template
 
 Initializes a FormScript object, which involves compiling templates.
 
-    element: `required` An element identifier, without the `#` prefix, of the DOM element to put the generated form into.
-    templates: An Object that maps the HTML form input field types to a string containing `underscore.js` template code for this field.
+* element: `required` An element identifier, without the `#` prefix, of the DOM element to put the generated form into.
+* templates: An Object that maps the HTML form input field types to a string containing `underscore.js` template code for this field.
 
 ### renderSchema(schema, [values])
 
 Inserts a new form into the DOM, based on the given schema Object. Optionally, the may be populated with default values by supplying a values mapping Object.
 
-    schema: `required` An Object that follows the FormScript schema DSL.
-    values: An Object that maps schema field names to their values.
+* schema: `required` An Object that follows the FormScript schema DSL.
+* values: An Object that maps schema field names to their values.
 
 ## Dependencies
 
 The only dependency is `underscore.js`.
+
+## Why?!?
+
+A particular project called for dynamic web forms that could also be queried on, once submitted, based on the given field names and values. Think about a ticket system in which the end users get to also specify the ticket's fields when then open a new ticket.
