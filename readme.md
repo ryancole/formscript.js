@@ -34,6 +34,10 @@ form.renderSchema({
 });
 ```
 
+## Why?!?
+
+A particular project called for dynamic web forms that could also be queried on, once submitted, based on the given field names and values. Think about a ticket system in which the end users get to also specify the ticket's fields when then open a new ticket.
+
 ## Naming Convention
 
 In order for `FormScript` to convert a Javascript Object into an HTML Form, the Object must follow a particular naming convention.
