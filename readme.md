@@ -1,18 +1,15 @@
 FormScript converts Javascript Objects into HTML forms.
 
-# Example
-
-Use this ...
+## Example
 
 ```javascript
-var form = new FormScript('form-wrapper');
-form.renderSchema(schema);
-```
+var form = new FormScript('form-wrapper', {
 
-to convert this ...
+    text: document.getElementById('text-field-template').innerHTML
 
-```javascript
-var schema = {
+});
+
+form.renderSchema({
     
     fields: {
         
@@ -21,52 +18,52 @@ var schema = {
             label: 'What is your name?'
         },
         
-        lipsum: {
-            type: 'textarea',
-            label: 'Great spot for some Lipsum:'
-        },
-        
-        file: {
-            type: 'file',
-            label: 'Choose a file:'
-        },
-        
         color: {
             type: 'select',
             label: 'What is your favorite color?',
             options: [
             
-                { label: 'red', value: 'red' },
-                { label: 'green', value: 'green' },
-                { label: 'blue', value: 'blue' }
+                { label: 'Red', value: 'r' },
+                { label: 'Blue', value: 'b' },
+                { label: 'Green', value: 'g' },
             
             ]
         }
         
     }
-}
+});
 ```
 
-into this ...
- 
-```html
-<div id="form-wrapper"><div class="field-wrapper"><label for="name">What is your name?</label><input type="text" name="name"></div><div class="field-wrapper"><label for="lipsum">Great spot for some Lipsum:</label><textarea name="lipsum"></textarea></div><div class="field-wrapper"><label for="file">Choose a file:</label><input type="file" name="file"></div><div class="field-wrapper"><label for="color">What is your favorite color?</label><select name="color"><option value="red">red</option><option value="green">green</option><option value="blue">blue</option></select></div></div>
-```
+## Naming Convention
 
-# Naming Convention
+In order for `FormScript` to convert a Javascript Object into an HTML Form, the Object must follow a particular naming convention.
 
-In order for `formscript.js` to be able to convert an Object into a form, the Object must follow a particular naming convention.
+Using the example above, the Object must have a property named `fields`. `fields` must be an Object where each property specifies a desired HTML form field. The property name of each desired form field will be used within the generated HTML as the form field name.
 
-Using the example above, the Object must have a property named `fields`. `fields` must be an embedded Object where each property specifies a desired HTML form field. The property name of each desired form field will be used within the generated HTML as the form field name.
-
-The desired form field Objects *must* have the following properties: `type` and `label`. The `type` property should be a string containing the HTML form field type. These map to the [types specified by the HTML spec](https://developer.mozilla.org/en-US/docs/HTML/Element/Input#Attributes) itself, as well as additional elements such as `select`.
+All of the desired form field Objects *must* have the following properties: `type` and `label`. The `type` property should be a string containing the HTML form field type. These map to the [types specified by the HTML spec](https://developer.mozilla.org/en-US/docs/HTML/Element/Input#Attributes) itself: `text`, `textarea`, `file`, `select`, `radio`.
 
 Additional optional properties are necessary, depending on which form field type is being used.
 
-# Form Field Templates
+## Form Field Templates
 
-Each form field type is converted to HTML using its own template. Currently, the templates are hard-coded using underscore.js templates. The plan is to make both the template engine and template code customizable.
+Each form field type is converted to HTML using its own `underscore.js` template code. FormScript contains simple default templates, but they can be overridden on a one-by-one basis at initialzation time.
 
-# Dependencies
+## API
 
-`formscript.js` requires `underscore.js`.
+### FormScript(element, [templates])
+
+Initializes a FormScript object, which involves compiling templates.
+
+    element: `required` An element identifier, without the `#` prefix, of the DOM element to put the generated form into.
+    templates: An Object that maps the HTML form input field types to a string containing `underscore.js` template code for this field.
+
+### renderSchema(schema, [values])
+
+Inserts a new form into the DOM, based on the given schema Object. Optionally, the may be populated with default values by supplying a values mapping Object.
+
+    schema: `required` An Object that follows the FormScript schema DSL.
+    values: An Object that maps schema field names to their values.
+
+## Dependencies
+
+The only dependency is `underscore.js`.
