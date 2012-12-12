@@ -1,6 +1,6 @@
 FormScript converts Javascript Objects into HTML forms.
 
-## Example
+## Example ([jsfiddle](http://jsfiddle.net/W74Ed/ "jsfiddle"))
 
 ```javascript
 var form = new FormScript('form-wrapper', {
