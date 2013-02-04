@@ -9,6 +9,7 @@ function FormScript (selector, templates) {
     
     this.templates = this.compileTemplates(_.defaults(templates || {}, {
         
+        hidden: '<input type="hidden" name="<%= name %>" value="<%= value %>" />',
         file: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><input type="file" name="<%= name %>" /></div>',
         textarea: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><textarea name="<%= name %>"><%= value %></textarea></div>',
         text: '<div class="field-wrapper"><label for="<%= name %>"><%= label %></label><input type="text" name="<%= name %>" value="<%= value %>" /></div>',
