@@ -47,20 +47,20 @@ FormScript.prototype.renderField = function (name, field, value) {
     
 };
 
-FormScript.prototype.renderFields = function (fields, data) {
+FormScript.prototype.renderFields = function (fields, values) {
     
     // render each given field template
     _.each(fields, function (field, key) {
         
-        this.renderField(key, field, data ? data[key] : null);
+        this.renderField(key, field, values ? values[key] : null);
         
     }.bind(this));
     
 };
 
-FormScript.prototype.renderSchema = function (schema, data) {
+FormScript.prototype.renderSchema = function (schema, values) {
     
     // render all fields in a given form schema
-    this.renderFields(schema.fields, data);
+    this.renderFields(schema.fields, values);
     
 };
